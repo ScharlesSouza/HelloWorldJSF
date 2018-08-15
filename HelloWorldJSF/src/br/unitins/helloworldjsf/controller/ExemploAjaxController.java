@@ -22,6 +22,11 @@ public class ExemploAjaxController implements Serializable {
 		this.nome = nome;
 	}
 	
+	public void imprimirConsole() {
+		
+		System.out.println("imprimir no console.");
+	}
+	
 	
 		
 }

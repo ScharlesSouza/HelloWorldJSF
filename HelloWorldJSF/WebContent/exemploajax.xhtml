@@ -10,15 +10,87 @@
     <h:body>
     	<h:form>
     		<h1>Ajax com JSF</h1>
-    		<hr/>
     		
+    		<hr/>
+    		<h2>Exemplo Ajax e ActionListener</h2>
     		<h:outputLabel  value="Nome:"/>
     		<h:inputText id="input" value="#{exemploAjaxController.nome}"/>
-    		<h:commandButton value="click">
-    			<f:ajax render="label" execute="input"/>		
-    
+    		<!-- ActionListener, propriedade do commandButton -->
+    		<h:commandButton value="click" 
+    						actionListener="#{exemploAjaxController.imprimirConsole}">
+    			<f:ajax render="label" execute="input"/>    
     		</h:commandButton>
     		<h:outputLabel id="label" value="#{exemploAjaxController.nome}"/>
+    		
+    		
+    		
+    		<hr/>
+    		<h2>Evento - clique</h2>    		
+    		<h:outputLabel  value="Nome:"/>
+    		<h:inputText id="inputClick" value="#{exemploAjaxController.nome}"/>
+    		<h:outputLabel id="labelClick" value="#{exemploAjaxController.nome}"/>
+    		<br/>
+    		<h:commandButton value="Botao" >
+    			<!-- Evento clique para qualquer componente -->
+    			<f:ajax event="click" render="labelClick" execute="inputClick"
+    					listener="#{exemploAjaxController.imprimirConsole}"/>    
+    		</h:commandButton>
+    		<br/>
+    		<h:outputLabel value="Label" >
+    			<!-- Evento clique para qualquer componente -->
+    			<f:ajax event="click" render="labelClick" execute="inputClick"
+    					listener="#{exemploAjaxController.imprimirConsole}"/>    
+    		</h:outputLabel>
+    		
+    		
+    		
+    		
+    		
+    		<hr/>
+    		<h2>Evento - Blur (sair focus)</h2>    		
+    		<h:outputLabel  value="Nome:"/>
+    		
+    		<h:inputText id="inputBlur" value="#{exemploAjaxController.nome}">
+    			<!-- Evento ao sair para qualquer componente -->
+    			<f:ajax event="blur" render="labelBlur" execute="inputBlur"
+    					listener="#{exemploAjaxController.imprimirConsole}"/>		
+        	</h:inputText>
+        	
+    		<h:outputLabel id="labelBlur" value="#{exemploAjaxController.nome}"/>
+    		
+    		
+    		
+    		
+    		
+    		<hr/>
+    		<h2>Evento - Keyup</h2>    		
+    		<h:outputLabel  value="Nome:"/>
+    		
+    		<h:inputText value="#{exemploAjaxController.nome}">
+    			<!-- Evento terminar de digitar para qualquer componente -->
+    			<f:ajax event="keyup" render="labelkeyup" execute="@this"
+    					listener="#{exemploAjaxController.imprimirConsole}"/>		
+        	</h:inputText>
+        	
+    		<h:outputLabel id="labelkeyup" value="#{exemploAjaxController.nome}"/>
+    		
+    		
+    		
+    		
+    		<hr/>
+    		<h2>Evento - Mouseover</h2>    		
+    		<h:outputLabel  value="Nome:"/>
+    		
+    		<h:inputText value="#{exemploAjaxController.nome}">
+    			<!-- Evento terminar de digitar para qualquer componente -->
+    			<f:ajax event="mouseover" render="labelMouseOver" execute="@this"
+    					listener="#{exemploAjaxController.imprimirConsole}"/>		
+        	</h:inputText>
+        	
+    		<h:outputLabel id="labelMouseOver" value="#{exemploAjaxController.nome}"/>
+    		
+    		
+    		
     	</h:form>
     		
     </h:body>
