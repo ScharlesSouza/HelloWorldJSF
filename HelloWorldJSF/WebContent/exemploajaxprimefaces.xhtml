@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Exemplo primefaces</title>
+        
+    </h:head>
+    <h:body>
+    	<h:form>
+    		<h1>Ajax com JSF e PrimeFaces</h1>
+    		
+    		<hr/>
+    		<h2>Exemplo Ajax e ActionListener</h2>
+    		<h:outputLabel  value="Nome:"/>
+    		<h:inputText id="input" value="#{exemploAjaxController.nome}"/>
+    		<!-- ActionListener, propriedade do commandButton -->
+    		<h:commandButton value="click" 
+    						actionListener="#{exemploAjaxController.imprimirConsole}">
+    			<f:ajax render="label" execute="input"/>    
+    		</h:commandButton>
+    		<h:outputLabel id="label" value="#{exemploAjaxController.nome}"/>
+    		
+    		<hr/>
+    		<h2>Exemplo Ajax Primefaces</h2>
+    		
+    		<p:outputLabel  value="Nome:"/>
+    		<p:inputText id="inputPrime" value="#{exemploAjaxController.nome}"/>
+    		<!-- ActionListener, propriedade do commandButton -->
+    		<p:commandButton value="click" 
+    						actionListener="#{exemploAjaxController.imprimirConsole}"
+    						process="@this inputPrime"
+    						update="labelPrime"/>   
+    		
+    		<p:outputLabel id="labelPrime" value="#{exemploAjaxController.nome}"/>
+    		
+    		
+    		
+    		<hr/>
+    		<h2>Evento - Blur (sair focus)</h2>    		
+    		<h:outputLabel  value="Nome:"/>
+    		
+    		<h:inputText id="inputBlur" value="#{exemploAjaxController.nome}">
+    			<!-- Evento ao sair para qualquer componente -->
+    			<f:ajax event="blur" render="labelBlur" execute="inputBlur"
+    					listener="#{exemploAjaxController.imprimirConsole}"/>		
+        	</h:inputText>
+        	
+    		<h:outputLabel id="labelBlur" value="#{exemploAjaxController.nome}"/>
+    		
+    		<hr/>
+    		<h2>Evento - Blur (sair focus) PrimeFaces</h2>    		
+    		<p:outputLabel  value="Nome:"/>
+    		
+    		<p:inputText id="inputBlurPrime" value="#{exemploAjaxController.nome}">
+    			<!-- Evento ao sair para qualquer componente -->
+    			<p:ajax event="blur" update="labelBlurPrime" process="inputBlurPrime"
+    					listener="#{exemploAjaxController.imprimirConsole}"/>		
+        	</p:inputText>
+        	
+    		<p:outputLabel id="labelBlurPrime" value="#{exemploAjaxController.nome}"/>
+    		
+    		
+    		
+    	</h:form>
+    		
+    </h:body>
+</html>
